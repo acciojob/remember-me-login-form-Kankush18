@@ -35,16 +35,19 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   // Check if there are saved details in local storage
-  const savedUsername = localStorage.getItem("username");
-  const savedPassword = localStorage.getItem("password");
+  const savedUsername=document.getElementById('username').value;
+  const savedPassword = localStorage.getItem(savedUsername);
   
-  if (savedUsername && savedPassword) {
+  if (savedPassword) {
     // If there are saved details, show the "Login as existing user" button
     const existingButton = document.createElement("button");
     existingButton.id = "existing";
     existingButton.textContent = "Login as existing user";
     document.getElementById("loginForm").appendChild(existingButton);
-    
+
+	  
+	  
+	  
     // Add event listener to the "Login as existing user" button
     existingButton.addEventListener("click", function() {
       alert("Logged in as " + savedUsername);
@@ -62,8 +65,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
     if (remember) {
       // If "Remember me" is checked, save username and password in local storage
-      localStorage.setItem("username", username);
-      localStorage.setItem("password", password);
+      localStorage.setItem( username,password);
+   
     } else {
       // If "Remember me" is unchecked, remove saved details from local storage
       localStorage.removeItem("username");
